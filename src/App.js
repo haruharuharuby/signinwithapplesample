@@ -2,6 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Amplify from 'aws-amplify'
+import config from './aws-exports'
+import { Auth } from 'aws-amplify'
+import FbLogin from './fblogin'
+import AppleLogin from './appleLogin'
+Amplify.configure(config)
+
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +26,9 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => Auth.federatedSignIn()}>Login with Facebook</button>
+        <FbLogin>FbLogin</FbLogin>
+        <AppleLogin>Apple Login</AppleLogin>
       </header>
     </div>
   );
